@@ -11,7 +11,7 @@ namespace ClimaTempo.Models
         public string Cidade { get; set; }
         public string Estado { get; set; }
         public DateTime Atualizado_em { get; set; }
-        public Clima clima { get; set; }
+        public List<Clima> clima { get; set; }
 
     }
 }

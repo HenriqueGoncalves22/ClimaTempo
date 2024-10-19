@@ -5,8 +5,9 @@
              Title="PrevisaoView">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="{Binding Cidade}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button Command ="{Binding BuscarPrevisaoCommand}" Text="Carregar"></Button>
     </VerticalStackLayout>
 </ContentPage>
