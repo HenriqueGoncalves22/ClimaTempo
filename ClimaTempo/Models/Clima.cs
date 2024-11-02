@@ -15,7 +15,5 @@ namespace ClimaTempo.Models
         public double Min { get; set; }
         public double Max { get; set; }
         public double Indice_uv { get; set; }
-
-
     }
 }
