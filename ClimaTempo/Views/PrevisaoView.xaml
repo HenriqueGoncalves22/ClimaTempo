@@ -38,7 +38,7 @@
                 <DataTemplate>
                     <HorizontalStackLayout>
                         <Label 
-                            Text="{Binding Min}"
+                            Text="{Binding Min}"/>
                         <Label 
                             Text="{Binding Max}"/>
                         <Label 

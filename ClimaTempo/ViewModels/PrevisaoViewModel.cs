@@ -19,6 +19,9 @@ namespace ClimaTempo.ViewModels
         private string estado;
 
         [ObservableProperty]
+        private int id;
+
+        [ObservableProperty]
         private DateTime data;
 
         [ObservableProperty]
@@ -39,13 +42,17 @@ namespace ClimaTempo.ViewModels
         private Previsao previsao;
         private Previsao proxPrevisao;
 
+        private List<Cidade> cidades;
+
 
         public ICommand BuscarPrevisaoCommand { get; }
+        public ICommand BuscarCidadesCommand { get; }
 
         public PrevisaoViewModel()
         {
             BuscarPrevisaoCommand = new Command(BuscarPrevisao);
-        }
+            BuscarCidadesCommand = new Command(BuscarCidades);
+    }
 
         public async void BuscarPrevisao()
         {
@@ -62,6 +69,11 @@ namespace ClimaTempo.ViewModels
             //Busca os dados da previsão para os próximos dias
             proxPrevisao = await new PrevisaoService().GetPrevisaoForXDaysById(244, 3);
             ProximosDias = proxPrevisao.clima;
+
+        }
+
+        public async void BuscarCidades()
+        {
 
         }
     }
