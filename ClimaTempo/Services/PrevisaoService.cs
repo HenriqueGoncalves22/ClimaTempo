@@ -31,7 +31,6 @@ namespace ClimaTempo.Services
 
         public async Task<Previsao> GetPrevisaoById(int cityCode)
         {
-            cityCode = 244;
             Uri requestUri = new Uri($"{uri}/{cityCode}");
             try
             {
@@ -50,7 +49,6 @@ namespace ClimaTempo.Services
         }
         public async Task<Previsao> GetPrevisaoForXDaysById(int cityCode, int days)
         {
-            cityCode = 244;
             days = 3;
             Uri requestUri = new Uri($"{uri}/{cityCode}/ {days}");
             try

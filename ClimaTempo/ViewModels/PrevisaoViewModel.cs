@@ -12,14 +12,12 @@ namespace ClimaTempo.ViewModels
 {
     public partial class PrevisaoViewModel : ObservableObject
     {
+        
         [ObservableProperty]
         private string cidade;
 
         [ObservableProperty]
         private string estado;
-
-        [ObservableProperty]
-        private int id;
 
         [ObservableProperty]
         private DateTime data;
@@ -36,12 +34,21 @@ namespace ClimaTempo.ViewModels
         [ObservableProperty]
         private double indice_uv;
 
+        //Dados da Pesquisa de Cidade
+        [ObservableProperty]
+        private string cidade_pesquisada;
+
+        //Dados da Pesquisa da Previsão por Cidade
+        [ObservableProperty]
+        private int id_pesquisado;
+
         [ObservableProperty]
         private List<Clima> proximosDias;
         
         private Previsao previsao;
         private Previsao proxPrevisao;
 
+        [ObservableProperty]
         private List<Cidade> cidades;
 
 
@@ -52,12 +59,12 @@ namespace ClimaTempo.ViewModels
         {
             BuscarPrevisaoCommand = new Command(BuscarPrevisao);
             BuscarCidadesCommand = new Command(BuscarCidades);
-    }
+        }
 
         public async void BuscarPrevisao()
         {
             //Busca os dados da previsão para uma cidade especificada
-            previsao = await new PrevisaoService().GetPrevisaoById(244);
+            previsao = await new PrevisaoService().GetPrevisaoById(id_pesquisado);
             Cidade = previsao.Cidade;
             Estado = previsao.Estado;
             Data = previsao.clima[0].Data;
@@ -67,14 +74,14 @@ namespace ClimaTempo.ViewModels
             Indice_uv = previsao.clima[0].Indice_uv;
 
             //Busca os dados da previsão para os próximos dias
-            proxPrevisao = await new PrevisaoService().GetPrevisaoForXDaysById(244, 3);
+            proxPrevisao = await new PrevisaoService().GetPrevisaoForXDaysById(id_pesquisado, 3);
             ProximosDias = proxPrevisao.clima;
-
         }
 
         public async void BuscarCidades()
         {
-
+            Cidades = new List<Cidade>();
+            Cidades = await new CidadeService().GetCidadesByName(cidade_pesquisada);
         }
     }
 }

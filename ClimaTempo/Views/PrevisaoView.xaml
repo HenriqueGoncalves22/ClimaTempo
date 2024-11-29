@@ -3,7 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClimaTempo.Views.PrevisaoView"
              Title="PrevisaoView">
-    <VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
+        <Entry
+            Placeholder="Digite sua cidade"
+            Text="{Binding Cidade_pesquisada}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        <Button Command="{Binding BuscarCidadesCommand}"
+            Text="Pesquisar Cidade"/>
+
+        <CollectionView ItemsSource="{Binding Cidades}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        <Label
+                            Text="{Binding Nome}"/>
+                        <Label
+                            Text="{Binding Id}"/> 
+                        <Label 
+                            Text="{Binding Estado}"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
         <Label 
             Text="{Binding Data}"
             VerticalOptions="Center" 
@@ -50,4 +74,5 @@
 
         <Button Command ="{Binding BuscarPrevisaoCommand}" Text="Carregar"></Button>
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
