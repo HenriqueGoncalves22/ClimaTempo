@@ -13,66 +13,22 @@
         <Button Command="{Binding BuscarCidadesCommand}"
             Text="Pesquisar Cidade"/>
 
-        <CollectionView ItemsSource="{Binding Cidades}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <HorizontalStackLayout>
-                        <Label
-                            Text="{Binding Nome}"/>
-                        <Label
-                            Text="{Binding Id}"/> 
-                        <Label 
+            <CollectionView ItemsSource="{Binding Cidades}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Button  
+                             Command="{Binding BuscarPrevisaoCommand}"
+                             Text="{Binding Nome}"/>
+                            <Label
+                            Text="{Binding Id}"/>
+                            <Label 
                             Text="{Binding Estado}"/>
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-        <Label 
-            Text="{Binding Data}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding Cidade}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding Estado}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding Max}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding Min}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding Indice_uv}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding Condicao}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        
-        <CollectionView ItemsSource="{Binding ProximosDias}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <HorizontalStackLayout>
-                        <Label 
-                            Text="{Binding Min}"/>
-                        <Label 
-                            Text="{Binding Max}"/>
-                        <Label 
-                            Text="{Binding Condicao}"/>
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-        <Button Command ="{Binding BuscarPrevisaoCommand}" Text="Carregar"></Button>
-    </VerticalStackLayout>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

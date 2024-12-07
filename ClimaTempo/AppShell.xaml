@@ -12,6 +12,10 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:PrevisaoView}"
         Route="MainPage" />
+    <ShellContent
+       Title="Details"
+       ContentTemplate="{DataTemplate local:PrevisaoDetailsView}"
+       Route="DetailsPage" />
 
 
 </Shell>

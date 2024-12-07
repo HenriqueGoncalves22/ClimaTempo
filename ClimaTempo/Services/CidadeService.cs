@@ -45,5 +45,7 @@ namespace ClimaTempo.Services
             }
             return cidades;
         }
+
+       
     }
     }
