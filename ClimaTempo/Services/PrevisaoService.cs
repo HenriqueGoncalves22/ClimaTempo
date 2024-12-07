@@ -40,6 +40,16 @@ namespace ClimaTempo.Services
                     string content = await response.Content.ReadAsStringAsync();
                     previsao = JsonSerializer.Deserialize<Previsao>(content, options);
                 }
+                else
+                {
+                    Previsao previsao = new Previsao();
+                    Clima climaTeste = new Clima();
+                    climaTeste.Max = 32;
+                    climaTeste.Min = 32;
+                    previsao.Estado = "SP";
+                    previsao.clima.Add(climaTeste);
+
+                }
             }
             catch (Exception ex)
             {

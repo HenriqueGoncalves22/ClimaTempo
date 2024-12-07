@@ -57,14 +57,14 @@ namespace ClimaTempo.ViewModels
 
         public PrevisaoViewModel()
         {
-            BuscarPrevisaoCommand = new Command(BuscarPrevisao);
+            BuscarPrevisaoCommand = new Command<int>(BuscarPrevisao);
             BuscarCidadesCommand = new Command(BuscarCidades);
         }
 
-        public async void BuscarPrevisao()
+        public async void BuscarPrevisao(int id)
         {
             //Busca os dados da previsão para uma cidade especificada
-            previsao = await new PrevisaoService().GetPrevisaoById(id_pesquisado);
+            previsao = await new PrevisaoService().GetPrevisaoById(id);
             Cidade = previsao.Cidade;
             Estado = previsao.Estado;
             Data = previsao.clima[0].Data;
@@ -74,7 +74,7 @@ namespace ClimaTempo.ViewModels
             Indice_uv = previsao.clima[0].Indice_uv;
 
             //Busca os dados da previsão para os próximos dias
-            proxPrevisao = await new PrevisaoService().GetPrevisaoForXDaysById(id_pesquisado, 3);
+            proxPrevisao = await new PrevisaoService().GetPrevisaoForXDaysById(id, 3);
             ProximosDias = proxPrevisao.clima;
         }
 
